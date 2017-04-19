@@ -49,6 +49,7 @@
      <Compile Include="Assets\MenuControllerRayCast\MenuController.cs" />
      <Compile Include="Assets\MenuControllerRayCast\TouchController.cs" />
      <Compile Include="Assets\Script\Main Marker\WorldStateMachine.cs" />
+     <Compile Include="Assets\Script\Totem Challange\BoxTouching.cs" />
      <Compile Include="Assets\Script\Totem Challange\TotemAnsweringMethod.cs" />
      <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
      <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />
