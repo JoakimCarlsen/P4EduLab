@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Scenes/Totem Challange.unity
+  isLoaded: 1
+  isActive: 1
