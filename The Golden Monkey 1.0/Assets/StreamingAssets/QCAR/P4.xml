@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="TotemButton4" size="200.000000 97.833336" />
+    <ImageTarget name="TotemButton3" size="200.000000 125.000000" />
+    <ImageTarget name="TotemButton2" size="200.000000 125.000000" />
+    <ImageTarget name="TotemButton1" size="200.000000 95.555557" />
+    <ImageTarget name="TheGoldenMonkeySecondary" size="200.000000 148.338867" />
+    <ImageTarget name="DistractMonkeySecondary" size="200.000000 146.354889" />
+    <ImageTarget name="TheGoldenMonkey" size="200.000000 200.000000" />
+    <ImageTarget name="DistractMonkey" size="200.000000 200.000000" />
+    <ImageTarget name="Totem" size="200.000000 200.000000" />
+    <ImageTarget name="SaveTiger" size="200.000000 200.000000" />
+    <ImageTarget name="BridgeRepair" size="200.000000 200.000000" />
+    <ImageTarget name="Main" size="200.000000 200.000000" />
+  </Tracking>
+</QCARConfig>
