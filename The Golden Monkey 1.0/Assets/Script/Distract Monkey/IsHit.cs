@@ -4,139 +4,161 @@ using UnityEngine;
 
 public class IsHit : MonoBehaviour {
 
-	public GameObject[] fruits;
-//	------------------------------ apple
-//	public GameObject apple;
-//	------------------------------ banana
-//	public GameObject banana;
-//	------------------------------ pear
-//	public GameObject pear;
+	public GameObject[] fruits;								// apples, pears and bananas
 
 	public GameObject cube;
-	public GameObject basket;
-
+	public GameObject stoneBowl;
 	public GameObject ImageTarget2;
 
-	AudioSource AppleHitSoundFX;
+	//	AudioSource AppleHitSoundFX;
+	int rememberFruit;										// creates integer used as a temporary varible to remember which fruit was taken
 
+//	-------------------------------- Winning State
+	int appleScore = 2;										// integers give each fruit a value that will be used in the winning state. The numbers are chosen specifically 
+	int bananaScore = 1;									// to make sure that there are only certain possibilities to answer correct.
+	int pearScore = 5;
+	int scoreCount;
 
 	bool isDragged = false;									// boolean to make sure that only one apple at a time can be moved
+	public bool [] fruitDone;								// boolean array to know when the fruit is in the bowl
 
-	public bool [] fruitReady;
-	public bool [] fruitDone;
 
-//	bool apple1Ready = false;
-//	bool apple2Ready = false;
-//	bool apple3Ready = false;
-//	bool apple1Done = false;
-//	bool apple2Done = false;
-//	bool apple3Done = false;
 
-//	bool getPoint = false;											// Score system (NEED FIX)
-//	int scoreCount;
+
+	//	bool getPoint = false;											// Score system (NEED FIX)
+
 
 
 	// Use this for initialization
 	void Start () {
-
-		for (int i = 0; i < fruitReady.Length; i++) {				// assign booleans in array with a false value
-			fruitReady [i] = false;
+		for (int i = 0; i < fruitDone.Length; i++) {				// assign booleans in array with a true value
+//			fruitReady [i] = true;
+			fruitDone [i] = false;
 		}
-			
+
 
 
 		cube = GameObject.Find ("Camera");
 
-		basket = GameObject.Find ("Basket");
+		stoneBowl = GameObject.Find ("StoneBowl");
 
 		ImageTarget2 = GameObject.Find ("ImageTarget2");
 
-		AppleHitSoundFX = GetComponent<AudioSource> ();
+		//		AppleHitSoundFX = GetComponent<AudioSource> ();
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
+		//	----------------------------------Winning State
+		if (scoreCount == 3) {
+			
+		}
+
 	}
 
 	void OnTriggerEnter(Collider col) {
-		
+
 		for (int i = 0; i < fruits.Length; i++) {
-			if (col.gameObject.name == ("fruit" + i) && isDragged == false) { 		// && fruitDone[0] == false			forloob
-				print ("bananaIsHit");
+			if (col.gameObject.name == ("fruit" + i) && isDragged == false && fruitDone[i] == false) { 		//&& fruitDone[i] == false	&& fruitReady[i] == true && fruitDone == false		forloop used to go through 
 				fruits[i].transform.parent = cube.transform;
 
-				if (i <= 1) {
-					fruits[i].transform.localPosition = new Vector3(0.004f, -0.08f, 0.9f);
+				if (i <= 2) {
+					fruits[i].transform.localPosition = new Vector3(0.004f, -0.04f, 0.35f);
+					fruits[i].transform.localScale = new Vector3(2.2f, 2.2f, 2.2f);
 				} else {
 					fruits[i].transform.localPosition = new Vector3(0.004f, -0.01f, 0.2f);
 					fruits[i].transform.localScale = new Vector3(2.2f, 2.2f, 2.2f);
 				}
+				rememberFruit = i;
 				isDragged = true;
-				//			fruitReady[0] = true;
+
 				//			AppleHitSoundFX.Play (); 		
 			}
-			print ("Loop: "+i);
-		}
 
 
-//		if (col.CompareTag("Apple2") && isDragged == false && apple2Done == false) {
-//			print ("apple2IsHit");
-//		
-//			apple2.transform.parent = cube.transform;
-//			apple2.transform.localPosition = new Vector3(0.004f, -0.05f, 0.1f); //(0.004f, -0.05f, 0.25f)
-//			apple2.transform.localScale = new Vector3 (2.2f, 2.2f, 2.2f);
-//			isDragged = true;
-//			apple2Ready = true;
-//			AppleHitSoundFX.Play ();
-//
-//
-//		}
-//
-//		if (col.CompareTag("Apple3") && isDragged == false && apple3Done == false) {
-//			print ("apple3IsHit");
-//
-//			apple3.transform.parent = cube.transform;
-//			apple3.transform.localPosition = new Vector3(0.004f, -0.05f, 0.1f);
-//			apple3.transform.localScale = new Vector3 (2.2f, 2.2f, 2.2f);
-//			isDragged = true;
-//			apple3Ready = true;
-//			AppleHitSoundFX.Play ();
-//
-//		}
-//
-		if (col.gameObject.name == ("StoneBowl")) {
-			print ("basketIsHit");
-			isDragged = false;
-	
-//			if (apple1Ready == true && apple1Done == false) {
-//				apple1.transform.parent = ImageTarget2.transform;
-//				apple1.transform.localPosition = new Vector3 (0.2f, 0.2f, 0.08f);
-//				apple1.transform.localScale = new Vector3 (2.6f, 2.6f, 2.6f);
-//				scoreCount++;
-//				apple1Done = true;
-//
-////				getPoint = true;
-//			}
+			if (col.gameObject.name == ("StoneBowl") && fruitDone[rememberFruit] == false) {
+				print ("basketIsHit");
+				isDragged = false;
+				fruits[rememberFruit].transform.parent = ImageTarget2.transform;
+				fruitDone [rememberFruit] = true;
 
-//			if (apple2Ready == true && apple2Done == false) {
-//				apple2.transform.parent = ImageTarget2.transform;
-//				apple2.transform.localPosition = new Vector3(-0.16f , 0.21f, -0.1f);
-//				apple2.transform.localScale = new Vector3 (2.6f, 2.6f, 2.6f);
-//				scoreCount++;
-//				apple2Done = true;
-//			}
-//
-//			if (apple3Ready == true && apple3Done == false) {
-//				apple3.transform.parent = ImageTarget2.transform;
-//				apple3.transform.localPosition = new Vector3(0.21f , 0.2f, -0.19f); //0.12 , .. , 0,1
-//				apple3.transform.localScale = new Vector3 (2.6f, 2.6f, 2.6f);
-//				scoreCount++;
-//				apple3Done = true;
+				if (rememberFruit <= 2) {			// positions for bananas
+					if (rememberFruit == 0) {
+						fruits[rememberFruit].transform.localPosition = new Vector3(0f , 0.03f, -0.08f);			
+						fruits[rememberFruit].transform.localRotation = Quaternion.Euler(-8.8f , 74f, 137f);
+						fruits[rememberFruit].transform.localScale = new Vector3 (5f, 5f, 5f);
+						scoreCount += bananaScore;
+					}
+
+					if (rememberFruit == 1) {
+						fruits[rememberFruit].transform.localPosition = new Vector3(0.04f , 0.03f, -0.01f);			
+						fruits[rememberFruit].transform.localRotation = Quaternion.Euler(-22f , 55f, 473f);
+						fruits[rememberFruit].transform.localScale = new Vector3 (5f, 5f, 5f);
+						scoreCount += bananaScore;
+					}
+					if (rememberFruit == 2) {
+						fruits[rememberFruit].transform.localPosition = new Vector3(-0.11f , 0.04f, 0.04f);			
+						fruits[rememberFruit].transform.localRotation = Quaternion.Euler(0.2f , 61f, 232f);
+						fruits[rememberFruit].transform.localScale = new Vector3 (5f, 5f, 5f);
+						scoreCount += bananaScore;
+					}
+				}
+				if (rememberFruit >= 3 && rememberFruit <= 5) {		// positions for apples
+					if (rememberFruit == 3) {
+						fruits[rememberFruit].transform.localPosition = new Vector3(-0.05f , 0.05f, -0.02f);
+						fruits[rememberFruit].transform.localRotation = Quaternion.Euler(-15f , 16f, 4f);
+						fruits[rememberFruit].transform.localScale = new Vector3 (6f, 6f, 6f);
+						scoreCount += appleScore;
+					}
+
+					if (rememberFruit == 4) {
+						fruits[rememberFruit].transform.localPosition = new Vector3(0.1f , 0.08f, 0.11f);
+						fruits[rememberFruit].transform.localRotation = Quaternion.Euler(-34f , 17.5f, -15.7f);
+						fruits[rememberFruit].transform.localScale = new Vector3 (6f, 6f, 6f);
+						scoreCount += appleScore;
+					}
+
+					if (rememberFruit == 5) {
+						fruits[rememberFruit].transform.localPosition = new Vector3(0f , 0.1f, -0.12f);
+						fruits[rememberFruit].transform.localRotation = Quaternion.Euler(-161f , 8f, 4f);
+						fruits[rememberFruit].transform.localScale = new Vector3 (6f, 6f, 6f);
+						scoreCount += appleScore;
+					}
+				}
+				if (rememberFruit >= 6 && rememberFruit <= 8) { 	// positions for pears
+					if (rememberFruit == 6) {
+						fruits[rememberFruit].transform.localPosition = new Vector3(0.02f , 0.08f, 0.04f);
+						fruits[rememberFruit].transform.localRotation = Quaternion.Euler(-18.4f , 24f, -150f);
+						fruits[rememberFruit].transform.localScale = new Vector3 (6f, 6f, 6f);
+						scoreCount += pearScore;
+					}
+
+					if (rememberFruit == 7) {
+						fruits[rememberFruit].transform.localPosition = new Vector3(-0.1f , 0.08f, -0.1f);
+						fruits[rememberFruit].transform.localRotation = Quaternion.Euler(-8.8f , -23f, -44f);
+						fruits[rememberFruit].transform.localScale = new Vector3 (6f, 6f, 6f);
+						scoreCount += pearScore;
+					}
+
+					if (rememberFruit == 8) {
+						fruits[rememberFruit].transform.localPosition = new Vector3(-0.1f , 0.08f, 0.1f);
+						fruits[rememberFruit].transform.localRotation = Quaternion.Euler(-5.2f , 42.3f, -15.4f);
+						fruits[rememberFruit].transform.localScale = new Vector3 (6f, 6f, 6f);
+						scoreCount += pearScore;
+					}
+			
+				}
+
+				print ("score is " + scoreCount);
+
 			}
 		}
 	}
+		
+
+}
 
 //	void OnGUI() {
 //		if (getPoint == true) {	
