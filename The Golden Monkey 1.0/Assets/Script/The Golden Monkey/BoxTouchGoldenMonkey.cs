@@ -48,6 +48,10 @@ public class BoxTouchGoldenMonkey : MonoBehaviour
 			rock [numRock].transform.localRotation = Quaternion.Euler (0, 0, 0);
 			numRock++;
 		}
+
+		if (col.gameObject.name == "Lever") {
+			scaleBehaviour.GetComponent<ScaleBehaviour>().leverPulled = true;
+		}
 	}
 
 }

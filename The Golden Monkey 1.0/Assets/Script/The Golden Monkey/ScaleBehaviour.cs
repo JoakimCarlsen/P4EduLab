@@ -7,12 +7,13 @@ public class ScaleBehaviour : MonoBehaviour {
 	public int scaleNum = 0;
 
 	private int currentAns = 0;
-	private int correctAns = 3;
+	private int correctAns = 1;
 
-	bool leverPulled = false;
+	public bool leverPulled = false;
 
+	public GameObject reward;
 
-	public GameObject arrow;
+	private GameObject arrow;
 
 	// Use this for initialization
 	void Start () {
@@ -40,6 +41,7 @@ public class ScaleBehaviour : MonoBehaviour {
 
 		if (leverPulled == true && currentAns == correctAns){
 			print ("winner");
+			reward.SetActive(true);
 		}
 
 		if (leverPulled == true && currentAns != correctAns){
