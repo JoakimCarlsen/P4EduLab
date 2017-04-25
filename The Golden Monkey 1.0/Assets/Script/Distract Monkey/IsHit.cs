@@ -13,6 +13,8 @@ public class IsHit : MonoBehaviour {
 	//	AudioSource AppleHitSoundFX;
 	int rememberFruit;										// creates integer used as a temporary varible to remember which fruit was taken
 
+	int[] rememberFruitsArray;				// NEED FIX			// remember fruits to get the correct fruits attatched to camera so the bowl with fruit can be moved
+
 //	-------------------------------- Winning State
 	int appleScore = 2;										// integers give each fruit a value that will be used in the winning state. The numbers are chosen specifically 
 	int bananaScore = 1;									// to make sure that there are only certain possibilities to answer correct.
@@ -25,14 +27,13 @@ public class IsHit : MonoBehaviour {
 
 
 
-	//	bool getPoint = false;											// Score system (NEED FIX)
 
 
 
 	// Use this for initialization
 	void Start () {
 		for (int i = 0; i < fruitDone.Length; i++) {				// assign booleans in array with a true value
-//			fruitReady [i] = true;
+
 			fruitDone [i] = false;
 		}
 
@@ -53,9 +54,23 @@ public class IsHit : MonoBehaviour {
 
 		//	----------------------------------Winning State
 		if (scoreCount == 3) {
-			
+			print("possibility 1 answered");
+			scoreCount = 0;
+		}
+		if (scoreCount == 4) {
+			print("possibility 2 answered");
+			scoreCount = 0;
 		}
 
+		if (scoreCount == 6) {
+			print("possibility 3 answered");
+			scoreCount = 0;
+		}
+
+		if (scoreCount == 7) {
+			print("possibility 4 answered");
+			scoreCount = 0;
+		}
 	}
 
 	void OnTriggerEnter(Collider col) {
