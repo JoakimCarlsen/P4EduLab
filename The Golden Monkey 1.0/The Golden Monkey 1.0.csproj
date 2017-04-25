@@ -91,6 +91,7 @@
     <Compile Include="Assets\Script\Save Tiger\SaveTigerTrigger.cs" />
     <Compile Include="Assets\Script\The Golden Monkey\BoxTouchGoldenMonkey.cs" />
     <Compile Include="Assets\Script\The Golden Monkey\BoxTouchingGoldenMonkey.cs" />
+    <Compile Include="Assets\Script\The Golden Monkey\ScaleBehaviour.cs" />
     <Compile Include="Assets\Script\Totem Challange\BoxTouchingTotem.cs" />
     <Compile Include="Assets\Script\Totem Challange\TotemAnsweringMethod.cs" />
     <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
