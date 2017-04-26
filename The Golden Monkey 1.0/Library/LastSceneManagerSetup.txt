@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/The Golden Monkey.unity
+- path: Assets/Scenes/Fix Bridge.unity
   isLoaded: 1
   isActive: 1
