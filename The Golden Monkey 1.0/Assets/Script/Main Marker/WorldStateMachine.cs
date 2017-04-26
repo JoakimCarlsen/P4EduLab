@@ -9,21 +9,20 @@ public class WorldStateMachine : MonoBehaviour {
     public bool[] finishQuest ;
 
     public enum WorldStates{
-        Start,
-        Position1,
-        Position2,
-        Position3,
-        Position4,
-        Position5,
-        Finish
+        Waterfall,
+        Totem,
+        TigerCage,
+        DistractMonkey,
+        Tempel
     }
 
-    public WorldStates currentState = WorldStates.Start;
+    public WorldStates currentState;
 
 	// Use this for initialization
 	void Start () {
         Player = GameObject.FindGameObjectWithTag("Player");
         DontDestroyOnLoad(this.gameObject);
+        currentState = (WorldStates)Random.Range(0, 4);
         
 	}
 	
@@ -31,26 +30,21 @@ public class WorldStateMachine : MonoBehaviour {
 	void Update () {
         switch (currentState)
         {
-            case WorldStates.Start:
+            case WorldStates.Waterfall:
                 Player.transform.position = positionObjects[0].transform.position;
                 break;
-            case WorldStates.Position1:
+            case WorldStates.Totem:
                 Player.transform.position = positionObjects[1].transform.position;
                
                 break;
-            case WorldStates.Position2:
+            case WorldStates.TigerCage:
                 Player.transform.position = positionObjects[2].transform.position;
                 break;
-            case WorldStates.Position3:
+            case WorldStates.DistractMonkey:
                 Player.transform.position = positionObjects[3].transform.position;
                 break;
-            case WorldStates.Position4:
+            case WorldStates.Tempel:
                 Player.transform.position = positionObjects[4].transform.position;
-                break;
-            case WorldStates.Position5:
-                Player.transform.position = positionObjects[5].transform.position;
-                break;
-            case WorldStates.Finish:
                 break;
         }
             
