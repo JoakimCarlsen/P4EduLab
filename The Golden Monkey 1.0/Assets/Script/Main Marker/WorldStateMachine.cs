@@ -22,7 +22,7 @@ public class WorldStateMachine : MonoBehaviour {
 	void Start () {
         Player = GameObject.FindGameObjectWithTag("Player");
         DontDestroyOnLoad(this.gameObject);
-        currentState = (WorldStates)Random.Range(0, 4);
+        
         
 	}
 	
