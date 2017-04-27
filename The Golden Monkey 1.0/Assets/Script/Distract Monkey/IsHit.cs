@@ -10,6 +10,9 @@ public class IsHit : MonoBehaviour {
 	public GameObject stoneBowl;
 	public GameObject ImageTarget2;
 
+	public GameObject reward;
+	public GameObject cameraObj;
+
 	//	AudioSource AppleHitSoundFX;
 	int rememberFruit;										// creates integer used as a temporary varible to remember which fruit was taken
 
@@ -65,6 +68,7 @@ public class IsHit : MonoBehaviour {
 		if (scoreCount == 6) {
 			print("possibility 3 answered");
 			scoreCount = 0;
+			StartCoroutine (RewardAnim());
 		}
 
 		if (scoreCount == 7) {
@@ -169,6 +173,25 @@ public class IsHit : MonoBehaviour {
 				print ("score is " + scoreCount);
 
 			}
+		}
+	}
+
+	IEnumerator RewardAnim()
+	{	yield return new WaitForSeconds(1);
+		reward.SetActive (true);
+
+		for (float i = 0.1f; i < 0.5f; i+=0.01f) {
+			reward.transform.parent = cameraObj.transform;
+			reward.transform.localPosition = new Vector3 (0, 0, 0.06f);		// (0, 0, 0.06f);
+			reward.transform.localScale = new Vector3 (i,i,i);
+			reward.transform.localRotation = Quaternion.Euler(-68, i, 8);
+			yield return new WaitForSeconds(0.001f);
+			print ("Scale: " +i);
+		}
+
+		for (float i = 1.0f; i < 10000.0f; i+=0.9f) {
+			reward.transform.localRotation = Quaternion.Euler(-68, i, 8);
+			yield return new WaitForSeconds(0.001f);
 		}
 	}
 		

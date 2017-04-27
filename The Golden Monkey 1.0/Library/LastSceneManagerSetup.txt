@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Fix Bridge.unity
+- path: Assets/Scenes/Distract Monkey.unity
   isLoaded: 1
   isActive: 1
