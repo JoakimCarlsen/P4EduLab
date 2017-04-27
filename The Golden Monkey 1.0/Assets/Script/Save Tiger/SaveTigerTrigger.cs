@@ -10,25 +10,19 @@ public class SaveTigerTrigger : MonoBehaviour {
     public GameObject reward;
     public GameObject locker;
     public GameObject cage;
-    public GameObject GlobalGameData;
+	public GameObject cameraObj;
 
-
-    bool isReadyForSceneChange = false;
+	public bool runOnce = false;
 
 	// Use this for initialization
 	void Start () {
-        GlobalGameData = GameObject.Find("GlobalGameData"); 
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-        if(isReadyForSceneChange == true && reward.GetComponent<MeshRenderer>().enabled == false)
-        {
-            GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
-        }
-        
-    }
+		
+	}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -54,21 +48,35 @@ public class SaveTigerTrigger : MonoBehaviour {
                 Destroy(keyObject);
 
             }
-            else if (keyObject.GetComponent<Key>().rightKey == true && other.gameObject.tag == "Lock")
+			else if (keyObject.GetComponent<Key>().rightKey == true && other.gameObject.tag == "Lock" && runOnce == false)
             {
                 print("The Right Key");
-                reward.SetActive(true);
+				StartCoroutine (RewardAnim());
+				runOnce = true;
                 Destroy(keyObject);
                 Destroy(locker);
-                GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
-                
                 Destroy(cage);
-                
             }
         }
         
-        
-
-        
     }
+
+	IEnumerator RewardAnim()
+	{	yield return new WaitForSeconds(1);
+		reward.SetActive(true);
+
+		for (float i = 0.001f; i < 0.4f; i+=0.01f) {
+			reward.transform.parent = cameraObj.transform;
+			reward.transform.localPosition = new Vector3 (0, 0, 0.06f);		// (0, 0, 0.06f);
+			reward.transform.localScale = new Vector3 (i,i,i);
+			reward.transform.localRotation = Quaternion.Euler(-100, i, 8);
+			yield return new WaitForSeconds(0.000000001f);
+		}
+
+		for (float i = 1.0f; i < 10000.0f; i+=1f) {
+			reward.transform.localRotation = Quaternion.Euler(-100, i, 8);
+			print ("Scale : "+i);
+			yield return new WaitForSeconds(0.001f);
+		}
+	}
 }
