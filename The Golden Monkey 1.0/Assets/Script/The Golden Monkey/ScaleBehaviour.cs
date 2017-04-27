@@ -22,20 +22,21 @@ public class ScaleBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// THIS NEEDS TO BE (S)LERPED IN THE FUTURE
 		if (scaleNum == 0) {
-			arrow.transform.localPosition = new Vector3 (0,0,-1.5f);
+			arrow.transform.localEulerAngles = new Vector3 (0,90,90);
 			currentAns = 0;
 		} else if (scaleNum == 1) {
-			arrow.transform.localPosition = new Vector3(0,0.6f,-1);
+			arrow.transform.localEulerAngles = new Vector3(0,135,90);
 			currentAns = 1;
 		} else if (scaleNum == 2) {
-			arrow.transform.localPosition = new Vector3 (0,1.2f,0);
+			arrow.transform.localEulerAngles = new Vector3 (0,180,90);
 			currentAns = 2;
 		} else if (scaleNum == 3) {
-			arrow.transform.localPosition = new Vector3 (0,0.6f,1f);
+			arrow.transform.localEulerAngles = new Vector3 (0,225,90);
 			currentAns = 3;
 		} else if (scaleNum == 4) {
-			arrow.transform.localPosition = new Vector3 (0,0,1.5f);
+			arrow.transform.localEulerAngles = new Vector3 (0,270,90);
 			currentAns = 4;
 		}
 
