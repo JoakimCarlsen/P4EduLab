@@ -99,7 +99,7 @@ public class GlobalGameData : MonoBehaviour
 
                 break;
             case 3:
-                switch (startValue)
+                switch (currentPiecesOfTreasure)
                 {
                     case 1:
                         SceneManager.LoadScene(4);
@@ -116,7 +116,7 @@ public class GlobalGameData : MonoBehaviour
                 }
                 break;
             case 4:
-                switch (startValue)
+                switch (currentPiecesOfTreasure)
                 {
                     case 1:
                         SceneManager.LoadScene(5);
@@ -133,7 +133,7 @@ public class GlobalGameData : MonoBehaviour
                 }
                 break;
             case 5:
-                switch (startValue)
+                switch (currentPiecesOfTreasure)
                 {
                     case 1:
                         SceneManager.LoadScene(1);

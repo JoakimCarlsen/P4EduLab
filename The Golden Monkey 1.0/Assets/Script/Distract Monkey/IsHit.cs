@@ -25,17 +25,22 @@ public class IsHit : MonoBehaviour {
 	int scoreCount;
 
 	bool isDragged = false;									// boolean to make sure that only one apple at a time can be moved
-	public bool [] fruitDone;								// boolean array to know when the fruit is in the bowl
+	public bool [] fruitDone;                               // boolean array to know when the fruit is in the bowl
+
+
+    bool isReadyForSceneChange = false;
+    public GameObject GlobalGameData;
+    public GameObject signObject;
 
 
 
 
 
 
-
-	// Use this for initialization
-	void Start () {
-		for (int i = 0; i < fruitDone.Length; i++) {				// assign booleans in array with a true value
+    // Use this for initialization
+    void Start () {
+        GlobalGameData = GameObject.Find("GlobalGameData");
+        for (int i = 0; i < fruitDone.Length; i++) {				// assign booleans in array with a true value
 
 			fruitDone [i] = false;
 		}
@@ -55,8 +60,13 @@ public class IsHit : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		//	----------------------------------Winning State
-		if (scoreCount == 3) {
+        if (isReadyForSceneChange == true && signObject.GetComponent<MeshRenderer>().enabled == false)
+        {
+            GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
+        }
+
+        //	----------------------------------Winning State
+        if (scoreCount == 3) {
 			print("possibility 1 answered");
 			scoreCount = 0;
 		}
@@ -69,6 +79,8 @@ public class IsHit : MonoBehaviour {
 			print("possibility 3 answered");
 			scoreCount = 0;
 			StartCoroutine (RewardAnim());
+            GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
+            isReadyForSceneChange = true;
 		}
 
 		if (scoreCount == 7) {

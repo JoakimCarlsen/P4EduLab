@@ -22,10 +22,14 @@ public class hitHoles : MonoBehaviour {
 
 	public Rigidbody rb;
 
-	// Use this for initialization
-	void Start () {
+    bool isReadyForSceneChange = false;
+    public GameObject GlobalGameData;
+    public GameObject signObject;
 
-		cameraObj = GameObject.Find ("Camera");
+    // Use this for initialization
+    void Start () {
+        GlobalGameData = GameObject.Find("GlobalGameData");
+        cameraObj = GameObject.Find ("Camera");
 	}
 	
 	// Update is called once per frame
@@ -36,7 +40,12 @@ public class hitHoles : MonoBehaviour {
 			float step = 1.0f * Time.deltaTime;
 			transform.position = Vector3.Lerp(startPos, endPos, step);
 		}
-	}
+        if (isReadyForSceneChange == true && signObject.GetComponent<MeshRenderer>().enabled == false)
+        {
+            GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
+        }
+
+    }
 
 	void OnTriggerEnter(Collider col) {
 
@@ -62,7 +71,10 @@ public class hitHoles : MonoBehaviour {
 			// reward.transform.localPosition = new Vector3(0.5f, 0.5f, 0.5f);
 
 			rb.isKinematic = true;
-			}
+
+            GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
+            isReadyForSceneChange = true;
+        }
 
 		if (col.gameObject.name == ("Holes3")) { 		
 			print("WRONG! hole3 hit");

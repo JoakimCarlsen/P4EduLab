@@ -17,15 +17,26 @@ public class ScaleBehaviour : MonoBehaviour {
 
 	private GameObject arrow;
 
-	// Use this for initialization
-	void Start () {
-		arrow = GameObject.Find("ScaleArrow");
+    bool isReadyForSceneChange = false;
+    public GameObject GlobalGameData;
+    public GameObject signObject;
+
+
+    // Use this for initialization
+    void Start () {
+        GlobalGameData = GameObject.Find("GlobalGameData");
+        arrow = GameObject.Find("ScaleArrow");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		// THIS NEEDS TO BE (S)LERPED IN THE FUTURE
-		if (scaleNum == 0) {
+
+        if (isReadyForSceneChange == true && signObject.GetComponent<MeshRenderer>().enabled == false)
+        {
+            GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
+        }
+        // THIS NEEDS TO BE (S)LERPED IN THE FUTURE
+        if (scaleNum == 0) {
 			arrow.transform.localEulerAngles = new Vector3 (0,90,90);
 			currentAns = 0;
 		} else if (scaleNum == 1) {
@@ -46,7 +57,9 @@ public class ScaleBehaviour : MonoBehaviour {
 			print ("winner");
 			StartCoroutine (RewardAnim());
 			runOnce = true;
-		}
+            GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
+            isReadyForSceneChange = true;
+        }
 
 		if (leverPulled == true && currentAns != correctAns){
 			print ("loser");

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Totem Challange.unity
+- path: Assets/Scenes/SimpleMenu.unity
   isLoaded: 1
   isActive: 1

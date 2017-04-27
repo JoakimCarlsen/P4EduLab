@@ -11,18 +11,28 @@ public class SaveTigerTrigger : MonoBehaviour {
     public GameObject locker;
     public GameObject cage;
 	public GameObject cameraObj;
+    public GameObject signObject;
 
 	public bool runOnce = false;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    bool isReadyForSceneChange = false;
+    public GameObject GlobalGameData;
+
+
+    // Use this for initialization
+    void Start () {
+        GlobalGameData = GameObject.Find("GlobalGameData");
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+        if (isReadyForSceneChange == true && signObject.GetComponent<MeshRenderer>().enabled == false)
+        {
+            GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
+        }
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -56,6 +66,8 @@ public class SaveTigerTrigger : MonoBehaviour {
                 Destroy(keyObject);
                 Destroy(locker);
                 Destroy(cage);
+                GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
+                isReadyForSceneChange = true;
             }
         }
         
