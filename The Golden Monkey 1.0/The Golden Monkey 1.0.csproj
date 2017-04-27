@@ -86,7 +86,9 @@
     <Compile Include="Assets\Script\Distract Monkey\BasketSound.cs" />
     <Compile Include="Assets\Script\Distract Monkey\IsHit.cs" />
     <Compile Include="Assets\Script\Distract Monkey\getApples.cs" />
+    <Compile Include="Assets\Script\GlobalGameData\GlobalGameData.cs" />
     <Compile Include="Assets\Script\Main Marker\WorldStateMachine.cs" />
+    <Compile Include="Assets\Script\Menu\MenuScript.cs" />
     <Compile Include="Assets\Script\Save Tiger\Key.cs" />
     <Compile Include="Assets\Script\Save Tiger\SaveTigerTrigger.cs" />
     <Compile Include="Assets\Script\The Golden Monkey\BoxTouchGoldenMonkey.cs" />
@@ -130,6 +132,7 @@
     <Compile Include="Assets\Vuforia\Scripts\WireframeBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\WireframeTrackableEventHandler.cs" />
     <Compile Include="Assets\Vuforia\Scripts\WordBehaviour.cs" />
+    <Compile Include="Assets\lerpReward.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
