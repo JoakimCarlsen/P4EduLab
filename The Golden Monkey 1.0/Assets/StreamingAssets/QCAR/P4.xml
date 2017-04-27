@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="1_0_Island" size="200.000000 133.333328" />
+    <ImageTarget name="6_1_Stone" size="200.000000 150.000000" />
+    <ImageTarget name="6_0_Temple" size="200.000000 125.000000" />
+    <ImageTarget name="5_4_FruitBowl" size="200.000000 207.617188" />
+    <ImageTarget name="5_3_Mango" size="200.000000 176.000000" />
+    <ImageTarget name="5_2_Banana" size="200.000000 133.789062" />
+    <ImageTarget name="5_1_Apple" size="200.000000 132.666672" />
+    <ImageTarget name="5_0_Monkey" size="200.000000 200.000000" />
+    <ImageTarget name="4_4_Button4" size="200.000000 253.804352" />
+    <ImageTarget name="4_3_Button3" size="200.000000 266.666656" />
+    <ImageTarget name="4_2_Button2" size="200.000000 200.000000" />
+    <ImageTarget name="4_1_Button1" size="200.000000 303.260864" />
+    <ImageTarget name="4_0_Totem" size="200.000000 290.000000" />
+    <ImageTarget name="3_4_Key4" size="200.000000 150.000000" />
+    <ImageTarget name="3_3_Key3" size="200.000000 139.687500" />
+    <ImageTarget name="3_2_Key2" size="200.000000 200.000000" />
+    <ImageTarget name="3_1_Key1" size="200.000000 133.333328" />
+    <ImageTarget name="3_0_Tiger" size="200.000000 278.571442" />
+    <ImageTarget name="2_1_Rocks" size="200.000000 133.333328" />
+    <ImageTarget name="2_0_Waterfall" size="200.000000 141.232224" />
+    <ImageTarget name="Fessor5" size="200.000000 200.000000" />
+    <ImageTarget name="Fessor4" size="200.000000 200.000000" />
+    <ImageTarget name="Fessor3" size="200.000000 200.000000" />
+    <ImageTarget name="Fessor2" size="200.000000 200.000000" />
+    <ImageTarget name="Fessor1" size="200.000000 200.000000" />
+  </Tracking>
+</QCARConfig>
