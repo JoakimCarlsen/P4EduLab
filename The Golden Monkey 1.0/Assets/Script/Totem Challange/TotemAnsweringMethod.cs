@@ -27,15 +27,25 @@ public class TotemAnsweringMethod : MonoBehaviour {
 	public GameObject[] models;
 
 
-	// Use this for initialization
-	void Start () {
+    bool readyForChangeScene = false;
+
+    // Use this for initialization
+    void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if (sign1 == true)
+        if (readyForChangeScene == true)
+        {
+            if (reward.GetComponent<MeshRenderer>().enabled == false)
+            {
+                GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
+            }
+        }
+
+        if (sign1 == true)
 		{
 			// Adds a 1 to the signOrder list
 			signOrder.Add (1);
@@ -88,7 +98,7 @@ public class TotemAnsweringMethod : MonoBehaviour {
 				print ("Correct");
 				reward.SetActive(true);
                 GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
-                GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
+                readyForChangeScene = true;
             } else if (guess != answer){
 				print ("Wrong");
 			}

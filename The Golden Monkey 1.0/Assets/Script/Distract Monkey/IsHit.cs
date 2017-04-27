@@ -22,7 +22,8 @@ public class IsHit : MonoBehaviour {
 	int pearScore = 5;
 	int scoreCount;
 
-	bool isDragged = false;									// boolean to make sure that only one apple at a time can be moved
+    bool readyForChangeScene = false;
+    bool isDragged = false;									// boolean to make sure that only one apple at a time can be moved
 	public bool [] fruitDone;								// boolean array to know when the fruit is in the bowl
 
 
