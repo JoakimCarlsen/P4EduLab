@@ -19,17 +19,19 @@ public class TotemAnsweringMethod : MonoBehaviour {
 	public List<int> signOrder = new List<int>();
 
 	public GameObject reward;
+    public GameObject GlobalGameData;
 
-	// Array of the four buttons
-	public GameObject[] buttons;
+    // Array of the four buttons
+    public GameObject[] buttons;
 
 	public GameObject[] models;
 
 
 	// Use this for initialization
 	void Start () {
+        GlobalGameData = GameObject.Find("GlobalGameData");
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -85,7 +87,9 @@ public class TotemAnsweringMethod : MonoBehaviour {
 			{
 				print ("Correct");
 				reward.SetActive(true);
-			} else if (guess != answer){
+                GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
+                GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
+            } else if (guess != answer){
 				print ("Wrong");
 			}
 		}

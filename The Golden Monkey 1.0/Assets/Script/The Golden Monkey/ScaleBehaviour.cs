@@ -14,11 +14,13 @@ public class ScaleBehaviour : MonoBehaviour {
 	public GameObject reward;
 
 	private GameObject arrow;
+    public GameObject GlobalGameData;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		arrow = GameObject.Find("ScaleArrow");
-	}
+        GlobalGameData = GameObject.Find("GlobalGameData");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -43,7 +45,9 @@ public class ScaleBehaviour : MonoBehaviour {
 		if (leverPulled == true && currentAns == correctAns){
 			print ("winner");
 			reward.SetActive(true);
-		}
+            GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
+            GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
+        }
 
 		if (leverPulled == true && currentAns != correctAns){
 			print ("loser");

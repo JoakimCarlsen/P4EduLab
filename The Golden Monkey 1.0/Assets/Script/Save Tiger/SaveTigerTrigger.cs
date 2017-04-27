@@ -10,10 +10,11 @@ public class SaveTigerTrigger : MonoBehaviour {
     public GameObject reward;
     public GameObject locker;
     public GameObject cage;
+    public GameObject GlobalGameData;
 
 	// Use this for initialization
 	void Start () {
-		
+        GlobalGameData = GameObject.Find("GlobalGameData"); 
 	}
 	
 	// Update is called once per frame
@@ -51,7 +52,10 @@ public class SaveTigerTrigger : MonoBehaviour {
                 reward.SetActive(true);
                 Destroy(keyObject);
                 Destroy(locker);
+                GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
+                GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
                 Destroy(cage);
+                
             }
         }
         

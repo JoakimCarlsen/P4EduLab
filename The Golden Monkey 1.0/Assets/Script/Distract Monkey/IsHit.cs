@@ -9,6 +9,7 @@ public class IsHit : MonoBehaviour {
 	public GameObject cube;
 	public GameObject stoneBowl;
 	public GameObject ImageTarget2;
+    public GameObject GlobalGameData;
 
 	//	AudioSource AppleHitSoundFX;
 	int rememberFruit;										// creates integer used as a temporary varible to remember which fruit was taken
@@ -39,6 +40,8 @@ public class IsHit : MonoBehaviour {
 
 
 
+        GlobalGameData = GameObject.Find("GlobalGameData");
+
 		cube = GameObject.Find ("Camera");
 
 		stoneBowl = GameObject.Find ("StoneBowl");
@@ -59,7 +62,9 @@ public class IsHit : MonoBehaviour {
 		}
 		if (scoreCount == 4) {
 			print("possibility 2 answered");
-			scoreCount = 0;
+            GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
+            GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
+            scoreCount = 0;
 		}
 
 		if (scoreCount == 6) {
