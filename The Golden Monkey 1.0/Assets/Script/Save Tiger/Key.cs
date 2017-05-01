@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Key : MonoBehaviour {
 
-    public bool rightKey;
+    public bool rightKey = false;
 
 	// Use this for initialization
 	void Start () {

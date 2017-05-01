@@ -78,6 +78,7 @@ public class IsHit : MonoBehaviour {
 		if (scoreCount == 6) {
 			print("possibility 3 answered");
 			scoreCount = 0;
+
 		}
 
 		if (scoreCount == 7) {

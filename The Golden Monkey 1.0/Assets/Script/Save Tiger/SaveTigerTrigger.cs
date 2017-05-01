@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class SaveTigerTrigger : MonoBehaviour {
 
@@ -22,6 +24,7 @@ public class SaveTigerTrigger : MonoBehaviour {
     // Use this for initialization
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
+        GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -54,8 +57,10 @@ public class SaveTigerTrigger : MonoBehaviour {
             if (keyObject.GetComponent<Key>().rightKey == false && other.gameObject.tag == "Lock")
             {
                 print("Wrong Lock");
-               
+                GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
                 Destroy(keyObject);
+                GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
+                
 
             }
 			else if (keyObject.GetComponent<Key>().rightKey == true && other.gameObject.tag == "Lock" && runOnce == false)
@@ -91,4 +96,5 @@ public class SaveTigerTrigger : MonoBehaviour {
 			yield return new WaitForSeconds(0.001f);
 		}
 	}
+
 }

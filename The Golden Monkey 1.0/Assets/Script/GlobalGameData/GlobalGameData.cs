@@ -11,9 +11,11 @@ public class GlobalGameData : MonoBehaviour
     public Button startButton;
     public GameObject globalDataObject;
     public GameObject finalReward; 
+    public GameObject restartButton = null;
     public int startValue;
     public int currentPiecesOfTreasure = 0;
     public int maxPiecesOfTreasure = 5;
+    public int wrongAnswer = 0; 
 
 
     // Use this for initialization
@@ -21,6 +23,9 @@ public class GlobalGameData : MonoBehaviour
     {
         
         finalReward.SetActive(false);
+        restartButton = GameObject.Find("Restart");
+        restartButton.GetComponent<Button>().onClick.AddListener(ChangeScenes);
+        restartButton.SetActive(false);
         DontDestroyOnLoad(globalDataObject);
     }
 
@@ -177,4 +182,6 @@ public class GlobalGameData : MonoBehaviour
             finalReward.SetActive(true);
         }
     }
+
+
 }

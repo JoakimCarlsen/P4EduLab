@@ -10,7 +10,7 @@ public class MenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        globalGameData = GameObject.Find("GlobalDataObject");
+        globalGameData = GameObject.Find("GlobalGameData");
 
         startButton.onClick.AddListener(globalGameData.GetComponent<GlobalGameData>().ChangeScenes);
 	}
