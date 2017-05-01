@@ -14,7 +14,7 @@ public class TotemAnsweringMethod : MonoBehaviour {
 	public string guess;
 
 	// Correct order of the correct answer
-	public string answer = "4321";
+	public string answer = "4312";
 
 	// A list of ints for the sign order
 	public List<int> signOrder = new List<int>();
