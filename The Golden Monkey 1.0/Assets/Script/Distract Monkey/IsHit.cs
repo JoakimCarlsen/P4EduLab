@@ -78,14 +78,14 @@ public class IsHit : MonoBehaviour {
 		if (scoreCount == 6) {
 			print("possibility 3 answered");
 			scoreCount = 0;
-			StartCoroutine (RewardAnim());
-            GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
-            isReadyForSceneChange = true;
 		}
 
 		if (scoreCount == 7) {
 			print("possibility 4 answered");
 			scoreCount = 0;
+			StartCoroutine (RewardAnim());
+			GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
+			isReadyForSceneChange = true;
 		}
 	}
 
