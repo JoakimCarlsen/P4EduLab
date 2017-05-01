@@ -10,6 +10,7 @@ public class GlobalGameData : MonoBehaviour
     public Dropdown pickStarterScene;
     public Button startButton;
     public GameObject globalDataObject;
+    public GameObject finalReward; 
     public int startValue;
     public int currentPiecesOfTreasure = 0;
     public int maxPiecesOfTreasure = 5;
@@ -18,13 +19,15 @@ public class GlobalGameData : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        
+        finalReward.SetActive(false);
         DontDestroyOnLoad(globalDataObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        WinningState();
     }
 
 
@@ -38,23 +41,23 @@ public class GlobalGameData : MonoBehaviour
         else if (pickStarterScene.GetComponent<Dropdown>().value == 1)
         {
             startValue = 2;
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
         else if (pickStarterScene.GetComponent<Dropdown>().value == 2)
         {
             startValue = 3;
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(1);
 
         }
         else if (pickStarterScene.GetComponent<Dropdown>().value == 3)
         {
             startValue = 4;
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(1);
         }
         else if (pickStarterScene.GetComponent<Dropdown>().value == 4)
         {
             startValue = 5;
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -65,35 +68,40 @@ public class GlobalGameData : MonoBehaviour
             case 1:
                 switch (currentPiecesOfTreasure)
                 {
-                   
-                    case 1:
+                    case 0:
                         SceneManager.LoadScene(2);
                         break;
-                    case 2:
+                    case 1:
                         SceneManager.LoadScene(3);
                         break;
-                    case 3:
+                    case 2:
                         SceneManager.LoadScene(4);
                         break;
-                    case 4:
+                    case 3:
                         SceneManager.LoadScene(5);
+                        break;
+                    case 4:
+                        SceneManager.LoadScene(6);
                         break;
                 }
                 break;
             case 2:
                 switch (currentPiecesOfTreasure)
                 {
-                    case 1:
+                    case 0:
                         SceneManager.LoadScene(3);
                         break;
-                    case 2:
+                    case 1:
                         SceneManager.LoadScene(4);
                         break;
-                    case 3:
+                    case 2:
                         SceneManager.LoadScene(5);
                         break;
+                    case 3:
+                        SceneManager.LoadScene(6);
+                        break;
                     case 4:
-                        SceneManager.LoadScene(1);
+                        SceneManager.LoadScene(2);
                         break;
                 }
 
@@ -101,42 +109,31 @@ public class GlobalGameData : MonoBehaviour
             case 3:
                 switch (currentPiecesOfTreasure)
                 {
-                    case 1:
+                    case 0:
                         SceneManager.LoadScene(4);
                         break;
-                    case 2:
+                    case 1:
                         SceneManager.LoadScene(5);
                         break;
+                    case 2:
+                        SceneManager.LoadScene(6);
+                        break;
                     case 3:
-                        SceneManager.LoadScene(1);
+                        SceneManager.LoadScene(2);
                         break;
                     case 4:
-                        SceneManager.LoadScene(2);
+                        SceneManager.LoadScene(3);
                         break;
                 }
                 break;
             case 4:
                 switch (currentPiecesOfTreasure)
                 {
-                    case 1:
+                    case 0:
                         SceneManager.LoadScene(5);
                         break;
-                    case 2:
-                        SceneManager.LoadScene(1);
-                        break;
-                    case 3:
-                        SceneManager.LoadScene(2);
-                        break;
-                    case 4:
-                        SceneManager.LoadScene(3);
-                        break;
-                }
-                break;
-            case 5:
-                switch (currentPiecesOfTreasure)
-                {
                     case 1:
-                        SceneManager.LoadScene(1);
+                        SceneManager.LoadScene(6);
                         break;
                     case 2:
                         SceneManager.LoadScene(2);
@@ -149,7 +146,35 @@ public class GlobalGameData : MonoBehaviour
                         break;
                 }
                 break;
+            case 5:
+                switch (currentPiecesOfTreasure)
+                {
+                    case 0:
+                        SceneManager.LoadScene(6);
+                        break;
+                    case 1:
+                        SceneManager.LoadScene(2);
+                        break;
+                    case 2:
+                        SceneManager.LoadScene(3);
+                        break;
+                    case 3:
+                        SceneManager.LoadScene(4);
+                        break;
+                    case 4:
+                        SceneManager.LoadScene(5);
+                        break;
+                }
+                break;
         }
 
+    }
+
+    public void WinningState()
+    {
+        if(currentPiecesOfTreasure == 5)
+        {
+            finalReward.SetActive(true);
+        }
     }
 }
