@@ -13,7 +13,7 @@ public class winningScore : MonoBehaviour {
 		globalGame = GameObject.Find("GlobalGameData");
 		text.GetComponent<Text>().text = "Du svarede forkert " + globalGame.GetComponent<GlobalGameData>().wrongAnswer
 			+ " gange.";
-		GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
+		globalGame.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
 	}
 	
 	// Update is called once per frame
