@@ -8,7 +8,7 @@ public class ScaleBehaviour : MonoBehaviour {
 	public int scaleNum = 0;
 
 	private int currentAns = 0;
-	private int correctAns = 1;
+	private int correctAns = 3;
 
 	public bool leverPulled = false;
 	public bool runOnce = false;
@@ -18,7 +18,6 @@ public class ScaleBehaviour : MonoBehaviour {
 
 	private GameObject arrow;
 
-    bool isReadyForSceneChange = false;
     public GameObject GlobalGameData;
     public GameObject signObject;
 
@@ -58,7 +57,6 @@ public class ScaleBehaviour : MonoBehaviour {
 			print ("winner");
 			StartCoroutine (RewardAnim());
 			runOnce = true;
-            GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
             GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
         }
 

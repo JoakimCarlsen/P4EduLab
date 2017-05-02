@@ -29,7 +29,6 @@ public class IsHit : MonoBehaviour {
 	public bool [] fruitDone;                               // boolean array to know when the fruit is in the bowl
 
 
-    bool isReadyForSceneChange = false;
     public GameObject GlobalGameData;
     public GameObject signObject;
 
@@ -92,7 +91,6 @@ public class IsHit : MonoBehaviour {
 			print("possibility 4 answered");
 			scoreCount = 0;
 			StartCoroutine (RewardAnim());
-			GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
             GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
         }
 	}

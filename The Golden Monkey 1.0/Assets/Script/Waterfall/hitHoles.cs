@@ -23,7 +23,6 @@ public class hitHoles : MonoBehaviour {
 
 	public Rigidbody rb;
 
-    bool isReadyForSceneChange = false;
     public GameObject GlobalGameData;
     public GameObject signObject;
 
@@ -75,7 +74,6 @@ public class hitHoles : MonoBehaviour {
 
 			rb.isKinematic = true;
 
-            GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
             GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
         }
 

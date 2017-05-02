@@ -20,6 +20,8 @@ public class GlobalGameData : MonoBehaviour
     public int maxPiecesOfTreasure = 5;
     public int wrongAnswer = 0; 
 
+	private bool loadOnce = false;
+
 
     // Use this for initialization
     void Start()
@@ -29,8 +31,9 @@ public class GlobalGameData : MonoBehaviour
         restartButton = GameObject.Find("Restart");
         collectTreasure = GameObject.Find("Collect");
         restartButton.GetComponent<Button>().onClick.AddListener(ChangeScenes);
+		collectTreasure.GetComponent<Button>().onClick.AddListener(AddOneToCurrentPiece);
         collectTreasure.GetComponent<Button>().onClick.AddListener(ChangeScenes);
-        restartButton.SetActive(false);
+		restartButton.SetActive(false);
         collectTreasure.SetActive(false);
         DontDestroyOnLoad(globalDataObject);
     }
@@ -182,10 +185,17 @@ public class GlobalGameData : MonoBehaviour
 
     }
 
+	public void AddOneToCurrentPiece ()
+	{
+		currentPiecesOfTreasure += 1;
+	}
+
     public void WinningState()
     {
-        if(currentPiecesOfTreasure == 5)
+		if(currentPiecesOfTreasure == 5 && loadOnce == false)
         {
+			loadOnce = true;
+			SceneManager.LoadScene(7);
             finalReward.SetActive(true);
         }
     }

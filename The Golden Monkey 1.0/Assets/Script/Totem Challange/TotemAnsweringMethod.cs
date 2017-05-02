@@ -28,7 +28,6 @@ public class TotemAnsweringMethod : MonoBehaviour {
 
 	public GameObject[] models;
 
-    bool isReadyForSceneChange = false;
     public GameObject GlobalGameData;
     public GameObject signObject;
 
@@ -97,7 +96,6 @@ public class TotemAnsweringMethod : MonoBehaviour {
 				StartCoroutine (RewardAnim());
 				runOnce = true;
 				print ("Correct");
-                GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
                 GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
             } else if (guess != answer){
 				print ("Wrong");

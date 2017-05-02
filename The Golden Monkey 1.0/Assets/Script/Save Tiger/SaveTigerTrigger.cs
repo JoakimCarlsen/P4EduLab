@@ -79,7 +79,7 @@ public class SaveTigerTrigger : MonoBehaviour {
                 Destroy(keyObject);
                 Destroy(locker);
                 Destroy(cage);
-                GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
+            //    GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
                 GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
                 isReadyForSceneChange = true;
             }
