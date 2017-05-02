@@ -25,11 +25,12 @@ public class SaveTigerTrigger : MonoBehaviour {
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
 		GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
-		//Maybe this will work if there are errors with the above being null
-//		if(GlobalGameData.GetComponent<GlobalGameData>().restartButton == false || true){
-//			GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
-//		} else if (GlobalGameData.GetComponent<GlobalGameData>().restartButton == null){
-//		}
+        GlobalGameData.GetComponent<GlobalGameData>().progressText.GetComponent<Text>().enabled = true;
+        //Maybe this will work if there are errors with the above being null
+        //		if(GlobalGameData.GetComponent<GlobalGameData>().restartButton == false || true){
+        //			GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
+        //		} else if (GlobalGameData.GetComponent<GlobalGameData>().restartButton == null){
+        //		}
         GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
     }
 	
@@ -39,14 +40,7 @@ public class SaveTigerTrigger : MonoBehaviour {
         
 
     }
-
-    public void CollectTreasure()
-    {
-        if (isReadyForSceneChange == true)
-        {
-            GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
-        }
-    }
+   
 
     
 

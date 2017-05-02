@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class hitHoles : MonoBehaviour {
 
@@ -31,6 +32,7 @@ public class hitHoles : MonoBehaviour {
         GlobalGameData = GameObject.Find("GlobalGameData");
         GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
         GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
+        GlobalGameData.GetComponent<GlobalGameData>().progressText.GetComponent<Text>().enabled = true; 
         cameraObj = GameObject.Find ("Camera");
 	}
 	

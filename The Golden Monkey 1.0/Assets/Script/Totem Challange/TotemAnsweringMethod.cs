@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class TotemAnsweringMethod : MonoBehaviour {
 
@@ -38,6 +38,7 @@ public class TotemAnsweringMethod : MonoBehaviour {
         GlobalGameData = GameObject.Find("GlobalGameData");
         GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
         GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
+        GlobalGameData.GetComponent<GlobalGameData>().progressText.GetComponent<Text>().enabled = true;
     }
 	
 	// Update is called once per frame

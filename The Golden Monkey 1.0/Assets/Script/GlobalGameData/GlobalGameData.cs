@@ -9,6 +9,7 @@ public class GlobalGameData : MonoBehaviour
 
     public Dropdown pickStarterScene;
     public Button startButton;
+    public Text progressText;
     public GameObject collectTreasure;
     public GameObject globalDataObject;
     public GameObject finalReward; 
@@ -38,6 +39,7 @@ public class GlobalGameData : MonoBehaviour
     void Update()
     {
         WinningState();
+        progressText.GetComponent<Text>().text = currentPiecesOfTreasure.ToString() + "/" + maxPiecesOfTreasure.ToString();
     }
 
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IsHit : MonoBehaviour {
 
@@ -42,6 +43,7 @@ public class IsHit : MonoBehaviour {
         GlobalGameData = GameObject.Find("GlobalGameData");
         GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
         GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
+        GlobalGameData.GetComponent<GlobalGameData>().progressText.GetComponent<Text>().enabled = true;
         for (int i = 0; i < fruitDone.Length; i++) {				// assign booleans in array with a true value
 
 			fruitDone [i] = false;
