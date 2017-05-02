@@ -15,7 +15,7 @@ public class IsHit : MonoBehaviour {
 	public GameObject cameraObj;
 
 	//	AudioSource AppleHitSoundFX;
-	int rememberFruit;										// creates integer used as a temporary varible to remember which fruit was taken
+	int rememberFruit = -1;										// creates integer used as a temporary varible to remember which fruit was taken
 
 	int[] rememberFruitsArray;				// NEED FIX			// remember fruits to get the correct fruits attatched to camera so the bowl with fruit can be moved
 

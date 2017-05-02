@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/SimpleMenu.unity
+- path: Assets/Scenes/The Golden Monkey.unity
   isLoaded: 1
   isActive: 1
