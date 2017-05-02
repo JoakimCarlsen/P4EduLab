@@ -93,6 +93,7 @@
     <Compile Include="Assets\Script\Distract Monkey\IsHit.cs" />
     <Compile Include="Assets\Script\Distract Monkey\getApples.cs" />
     <Compile Include="Assets\Script\GlobalGameData\GlobalGameData.cs" />
+    <Compile Include="Assets\Script\GlobalGameData\HardReset.cs" />
     <Compile Include="Assets\Script\Main Marker\WorldStateMachine.cs" />
     <Compile Include="Assets\Script\Menu\MenuScript.cs" />
     <Compile Include="Assets\Script\Save Tiger\Key.cs" />

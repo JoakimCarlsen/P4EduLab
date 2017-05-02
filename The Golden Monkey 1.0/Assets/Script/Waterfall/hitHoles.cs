@@ -30,6 +30,7 @@ public class hitHoles : MonoBehaviour {
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
         GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
+        GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
         cameraObj = GameObject.Find ("Camera");
 	}
 	
@@ -41,10 +42,7 @@ public class hitHoles : MonoBehaviour {
 			float step = 1.0f * Time.deltaTime;
 			transform.position = Vector3.Lerp(startPos, endPos, step);
 		}
-        if (isReadyForSceneChange == true && signObject.GetComponent<MeshRenderer>().enabled == false)
-        {
-            GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
-        }
+        
 
     }
 
@@ -76,7 +74,7 @@ public class hitHoles : MonoBehaviour {
 			rb.isKinematic = true;
 
             GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
-            isReadyForSceneChange = true;
+            GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
         }
 
 		if (col.gameObject.name == ("Holes3")) { 		

@@ -41,6 +41,7 @@ public class IsHit : MonoBehaviour {
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
         GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
+        GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
         for (int i = 0; i < fruitDone.Length; i++) {				// assign booleans in array with a true value
 
 			fruitDone [i] = false;
@@ -61,10 +62,7 @@ public class IsHit : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (isReadyForSceneChange == true && signObject.GetComponent<MeshRenderer>().enabled == false)
-        {
-            GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
-        }
+
 
         //	----------------------------------Winning State
         if (scoreCount == 3) {
@@ -93,8 +91,8 @@ public class IsHit : MonoBehaviour {
 			scoreCount = 0;
 			StartCoroutine (RewardAnim());
 			GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
-			isReadyForSceneChange = true;
-		}
+            GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
+        }
 	}
 
 	void OnTriggerEnter(Collider col) {

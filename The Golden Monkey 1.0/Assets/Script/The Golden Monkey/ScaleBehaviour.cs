@@ -26,16 +26,14 @@ public class ScaleBehaviour : MonoBehaviour {
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
         GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
+        GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
         arrow = GameObject.Find("ScaleArrow");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (isReadyForSceneChange == true && signObject.GetComponent<MeshRenderer>().enabled == false)
-        {
-            GlobalGameData.GetComponent<GlobalGameData>().ChangeScenes();
-        }
+
         // THIS NEEDS TO BE (S)LERPED IN THE FUTURE
         if (scaleNum == 0) {
 			arrow.transform.localEulerAngles = new Vector3 (0,90,90);
@@ -59,7 +57,7 @@ public class ScaleBehaviour : MonoBehaviour {
 			StartCoroutine (RewardAnim());
 			runOnce = true;
             GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
-            isReadyForSceneChange = true;
+            GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
         }
 
 		if (leverPulled == true && currentAns != correctAns){
