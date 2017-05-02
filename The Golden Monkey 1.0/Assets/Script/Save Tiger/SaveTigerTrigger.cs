@@ -57,8 +57,9 @@ public class SaveTigerTrigger : MonoBehaviour {
             if (keyObject.GetComponent<Key>().rightKey == false && other.gameObject.tag == "Lock")
             {
                 print("Wrong Lock");
-                GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
+                
                 Destroy(keyObject);
+                GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
                 GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
                 
 

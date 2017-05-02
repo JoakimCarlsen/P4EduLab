@@ -36,6 +36,7 @@ public class TotemAnsweringMethod : MonoBehaviour {
     // Use this for initialization
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
+        GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -101,7 +102,9 @@ public class TotemAnsweringMethod : MonoBehaviour {
                 isReadyForSceneChange = true;
             } else if (guess != answer){
 				print ("Wrong");
-			}
+                GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
+                GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
+            }
 		}
 			
 

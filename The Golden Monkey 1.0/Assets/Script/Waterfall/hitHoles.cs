@@ -29,6 +29,7 @@ public class hitHoles : MonoBehaviour {
     // Use this for initialization
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
+        GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
         cameraObj = GameObject.Find ("Camera");
 	}
 	
@@ -55,7 +56,9 @@ public class hitHoles : MonoBehaviour {
 			print("WRONG! hole1 hit");
 			ball.transform.localPosition = new Vector3(0.3656f, 0.01f, -0.2354f);
 			rb.isKinematic = true;
-			}
+            GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
+            GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
+        }
 
 		if (col.gameObject.name == ("Holes2")) { 		
 			print("CORRECT! hole2 hit");
@@ -80,15 +83,19 @@ public class hitHoles : MonoBehaviour {
 			print("WRONG! hole3 hit");
 			ball.transform.localPosition = new Vector3(-0.3582f, 0.01f, 0.2209f);
 			rb.isKinematic = true;
+            GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
+            GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
 
-			}
+        }
 
 		if (col.gameObject.name == ("Holes4")) { 		
 			print("WRONG! hole4 hit");
 			ball.transform.localPosition = new Vector3(-0.3439f, 0.01f, -0.2349f);
 			rb.isKinematic = true;
+            GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
+            GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
 
-			}
+        }
 	}
 
 	IEnumerator RewardAnim()

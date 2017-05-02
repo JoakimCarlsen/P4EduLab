@@ -40,6 +40,7 @@ public class IsHit : MonoBehaviour {
     // Use this for initialization
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
+        GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
         for (int i = 0; i < fruitDone.Length; i++) {				// assign booleans in array with a true value
 
 			fruitDone [i] = false;
@@ -68,16 +69,22 @@ public class IsHit : MonoBehaviour {
         //	----------------------------------Winning State
         if (scoreCount == 3) {
 			print("possibility 1 answered");
-			scoreCount = 0;
+            GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
+            GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
+            scoreCount = 0;
 		}
 		if (scoreCount == 4) {
 			print("possibility 2 answered");
-			scoreCount = 0;
+            GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
+            GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
+            scoreCount = 0;
 		}
 
 		if (scoreCount == 6) {
 			print("possibility 3 answered");
-			scoreCount = 0;
+            GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
+            GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
+            scoreCount = 0;
 
 		}
 

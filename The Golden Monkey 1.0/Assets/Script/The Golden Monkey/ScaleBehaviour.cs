@@ -25,6 +25,7 @@ public class ScaleBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
+        GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
         arrow = GameObject.Find("ScaleArrow");
 	}
 	
@@ -63,7 +64,9 @@ public class ScaleBehaviour : MonoBehaviour {
 
 		if (leverPulled == true && currentAns != correctAns){
 			print ("loser");
-		}
+            GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
+            GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
+        }
 	}
 
 	IEnumerator RewardAnim()
