@@ -9,9 +9,11 @@ public class GlobalGameData : MonoBehaviour
 
     public Dropdown pickStarterScene;
     public Button startButton;
+    public GameObject collectTreasure;
     public GameObject globalDataObject;
     public GameObject finalReward; 
     public GameObject restartButton = null;
+
     public int startValue;
     public int currentPiecesOfTreasure = 0;
     public int maxPiecesOfTreasure = 5;
@@ -24,8 +26,11 @@ public class GlobalGameData : MonoBehaviour
         
         finalReward.SetActive(false);
         restartButton = GameObject.Find("Restart");
+        collectTreasure = GameObject.Find("Collect");
         restartButton.GetComponent<Button>().onClick.AddListener(ChangeScenes);
+        collectTreasure.GetComponent<Button>().onClick.AddListener(ChangeScenes);
         restartButton.SetActive(false);
+        collectTreasure.SetActive(false);
         DontDestroyOnLoad(globalDataObject);
     }
 
