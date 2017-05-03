@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BoxTouchGoldenMonkey : MonoBehaviour
 {
+	AudioSource audioFeedback;
 
 	public GameObject[] rock;
 	public GameObject kamera;
 	public GameObject imageTarget;
 	public GameObject scaleBehaviour;
+	public GameObject lever;
 
 	public int temp;
 	private int temp2;
@@ -22,6 +24,8 @@ public class BoxTouchGoldenMonkey : MonoBehaviour
 		kamera = GameObject.Find ("Camera");
 
 		imageTarget = GameObject.Find ("ScaleMonkey");
+
+		audioFeedback = GetComponent<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -36,6 +40,9 @@ public class BoxTouchGoldenMonkey : MonoBehaviour
 		//if the name of the collided gameobject is Rock1 the following happens
 		for (int numRock = 0; numRock <= 7; numRock++) {
 			if (col.gameObject.name == "Rock" + numRock && holdingRock == false) {
+
+				audioFeedback.Play(); 		
+
 				temp2 = numRock;
 				holdingRock = true;
 				rock [numRock].transform.parent = kamera.transform;
@@ -48,6 +55,9 @@ public class BoxTouchGoldenMonkey : MonoBehaviour
 		}
 
 		if (col.gameObject.name == "BowlBox" && holdingRock == true) {
+
+			audioFeedback.Play(); 		
+
 			temp = scaleBehaviour.GetComponent<ScaleBehaviour> ().scaleNum;
 			scaleBehaviour.GetComponent<ScaleBehaviour> ().scaleNum = temp + 1;
 			holdingRock = false;
@@ -83,7 +93,11 @@ public class BoxTouchGoldenMonkey : MonoBehaviour
 		}
 
 		if (col.gameObject.name == "Lever") {
+
+			audioFeedback.Play(); 		
+
 			scaleBehaviour.GetComponent<ScaleBehaviour> ().leverPulled = true;
+			lever.transform.localRotation = Quaternion.Euler(0,180,0);
 		}
 	}
 

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class SaveTigerTrigger : MonoBehaviour {
 
+	AudioSource audioFeedback;
+
     public bool keyAttached = false;
     public GameObject keyObject;
     public GameObject keyHandle;
@@ -32,6 +34,8 @@ public class SaveTigerTrigger : MonoBehaviour {
         //		} else if (GlobalGameData.GetComponent<GlobalGameData>().restartButton == null){
         //		}
         GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
+
+		audioFeedback = GetComponent<AudioSource> ();
     }
 	
 	// Update is called once per frame
@@ -48,6 +52,8 @@ public class SaveTigerTrigger : MonoBehaviour {
     {
         if (other.gameObject.tag == "Key")
         {
+			audioFeedback.Play(); 		
+
             keyObject = other.gameObject; 
             print("Pick up key");
             keyAttached = true;
@@ -56,6 +62,7 @@ public class SaveTigerTrigger : MonoBehaviour {
             keyObject.transform.position = keyHandle.transform.position;
             keyObject.transform.localEulerAngles = new Vector3(0,75,0);
             keyObject.transform.localScale = new Vector3(10f, 10f, 10f);
+
             
         }
 
@@ -65,6 +72,8 @@ public class SaveTigerTrigger : MonoBehaviour {
             {
                 print("Wrong Lock");
                 
+				audioFeedback.Play(); 		
+
                 Destroy(keyObject);
                 GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
                 GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
@@ -74,6 +83,9 @@ public class SaveTigerTrigger : MonoBehaviour {
 			else if (keyObject.GetComponent<Key>().rightKey == true && other.gameObject.tag == "Lock" && runOnce == false)
             {
                 print("The Right Key");
+
+				audioFeedback.Play(); 		
+
 				StartCoroutine (RewardAnim());
 				runOnce = true;
                 Destroy(keyObject);

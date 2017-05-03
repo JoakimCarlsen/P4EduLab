@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class IsHit : MonoBehaviour {
 
+	AudioSource audioFeedback;
+
 	public GameObject[] fruits;								// apples, pears and bananas
 
 	public GameObject cube;
@@ -48,7 +50,7 @@ public class IsHit : MonoBehaviour {
 			fruitDone [i] = false;
 		}
 
-
+		audioFeedback = GetComponent<AudioSource> ();
 
 		cube = GameObject.Find ("Camera");
 
@@ -111,7 +113,7 @@ public class IsHit : MonoBehaviour {
 				rememberFruit = i;
 				isDragged = true;
 
-				//			AppleHitSoundFX.Play (); 		
+				audioFeedback.Play(); 		
 			}
 
 
@@ -120,6 +122,8 @@ public class IsHit : MonoBehaviour {
 				isDragged = false;
 				fruits[rememberFruit].transform.parent = ImageTarget2.transform;
 				fruitDone [rememberFruit] = true;
+
+				audioFeedback.Play(); 		
 
 				if (rememberFruit <= 2) {			// positions for bananas
 					if (rememberFruit == 0) {

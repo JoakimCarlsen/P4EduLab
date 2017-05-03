@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class hitHoles : MonoBehaviour {
 
+	AudioSource audioFeedback;
+
 	public GameObject[] holes;	
 	public GameObject ball;
 	public GameObject reward;
@@ -28,6 +30,7 @@ public class hitHoles : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+		audioFeedback = GetComponent<AudioSource> ();
         GlobalGameData = GameObject.Find("GlobalGameData");
         GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
         GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
@@ -49,18 +52,22 @@ public class hitHoles : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col) {
 
+		audioFeedback.Play(); 		
 
 
 		if (col.gameObject.name == ("Holes1")) { 		
 			print("WRONG! hole1 hit");
+
 			ball.transform.localPosition = new Vector3(0.3656f, 0.01f, -0.2354f);
 			rb.isKinematic = true;
             GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
             GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
+
         }
 
 		if (col.gameObject.name == ("Holes2")) { 		
 			print("CORRECT! hole2 hit");
+		
 			winning = true;
 			waterfall.SetActive (false);
 			StartCoroutine (RewardAnim());

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BoxTouchingTotem : MonoBehaviour {
 
+	AudioSource audioFeedback;
+
 	// Getting the scriptmanager
 	public GameObject scriptManager;
 
 	// Use this for initialization
 	void Start () {
-		
+		audioFeedback = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -20,11 +22,12 @@ public class BoxTouchingTotem : MonoBehaviour {
 	//  Method for collision
 	void OnTriggerEnter(Collider col)
 	{
+		audioFeedback.Play(); 		
+
 		// if the name of the collided gameobject is Button1 the following happens
 		if(col.gameObject.name == "Button1"){
 			// Goes to scriptmanager, finds the TotemAnsweringMethod script, find the sign1 bool, and turns it true
 			scriptManager.GetComponent<TotemAnsweringMethod>().sign1 = true;
-			print("HIT");
 		}
 
 		if(col.gameObject.name == "Button2"){
