@@ -1,12 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/The Golden Monkey/ScaleBehaviour.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/Distract Monkey/BasketSound.cs">
     <Files>
-      <File FileName="Assets/Script/GlobalGameData/GlobalGameData.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/winningScore.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/Waterfall/hitHoles.cs" Line="1" Column="1" />
-      <File FileName="Assets/Script/The Golden Monkey/BoxTouchGoldenMonkey.cs" Line="92" Column="2" />
-      <File FileName="Assets/Script/The Golden Monkey/ScaleBehaviour.cs" Line="83" Column="43" />
+      <File FileName="Assets/Script/Distract Monkey/BasketSound.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
