@@ -43,7 +43,7 @@ public class IsHit : MonoBehaviour {
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
         GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
-        GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
+      //  GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
         GlobalGameData.GetComponent<GlobalGameData>().progressText.GetComponent<Text>().enabled = true;
         for (int i = 0; i < fruitDone.Length; i++) {				// assign booleans in array with a true value
 
@@ -58,9 +58,12 @@ public class IsHit : MonoBehaviour {
 
 		ImageTarget2 = GameObject.Find ("ImageTarget2");
 
-		//		AppleHitSoundFX = GetComponent<AudioSource> ();
+        //		AppleHitSoundFX = GetComponent<AudioSource> ();
+        GlobalGameData.GetComponent<GlobalGameData>().ActivateMonkey();
 
-	}
+    }
+
+
 
 	// Update is called once per frame
 	void Update () {
@@ -93,7 +96,7 @@ public class IsHit : MonoBehaviour {
 			print("possibility 4 answered");
 			scoreCount = 0;
 			StartCoroutine (RewardAnim());
-            GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
+          //  GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
         }
 	}
 

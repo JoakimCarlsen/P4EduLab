@@ -36,8 +36,9 @@ public class TotemAnsweringMethod : MonoBehaviour {
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
         GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
-        GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
+        
         GlobalGameData.GetComponent<GlobalGameData>().progressText.GetComponent<Text>().enabled = true;
+        GlobalGameData.GetComponent<GlobalGameData>().ActivateMonkey();
     }
 	
 	// Update is called once per frame
@@ -96,7 +97,7 @@ public class TotemAnsweringMethod : MonoBehaviour {
 				StartCoroutine (RewardAnim());
 				runOnce = true;
 				print ("Correct");
-                GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
+                
             } else if (guess != answer){
 				print ("Wrong");
                 GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;

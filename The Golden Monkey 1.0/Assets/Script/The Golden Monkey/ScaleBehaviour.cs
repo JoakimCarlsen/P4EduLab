@@ -26,10 +26,11 @@ public class ScaleBehaviour : MonoBehaviour {
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
         GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
-        GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
+        
         GlobalGameData.GetComponent<GlobalGameData>().progressText.GetComponent<Text>().enabled = true;
         arrow = GameObject.Find("ScaleArrow");
-	}
+        GlobalGameData.GetComponent<GlobalGameData>().ActivateMonkey();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -57,7 +58,7 @@ public class ScaleBehaviour : MonoBehaviour {
 			print ("winner");
 			StartCoroutine (RewardAnim());
 			runOnce = true;
-            GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
+            
         }
 
 		if (leverPulled == true && currentAns != correctAns){

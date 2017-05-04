@@ -9,6 +9,7 @@ public class SaveTigerTrigger : MonoBehaviour {
 	AudioSource audioFeedback;
 
     public bool keyAttached = false;
+    public GameObject nothingObject;
     public GameObject keyObject;
     public GameObject keyHandle;
     public GameObject reward;
@@ -17,7 +18,9 @@ public class SaveTigerTrigger : MonoBehaviour {
 	public GameObject cameraObj;
     public GameObject signObject;
 
-	public bool runOnce = false;
+    public int gameLevelMinusOne;
+
+    public bool runOnce = false;
 
     bool isReadyForSceneChange = false;
     public GameObject GlobalGameData;
@@ -26,6 +29,7 @@ public class SaveTigerTrigger : MonoBehaviour {
     // Use this for initialization
     void Start () {
         GlobalGameData = GameObject.Find("GlobalGameData");
+        
 		GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
         GlobalGameData.GetComponent<GlobalGameData>().progressText.GetComponent<Text>().enabled = true;
         //Maybe this will work if there are errors with the above being null
@@ -33,9 +37,11 @@ public class SaveTigerTrigger : MonoBehaviour {
         //			GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
         //		} else if (GlobalGameData.GetComponent<GlobalGameData>().restartButton == null){
         //		}
-        GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
+        
 
 		audioFeedback = GetComponent<AudioSource> ();
+
+        GlobalGameData.GetComponent<GlobalGameData>().ActivateMonkey(); 
     }
 	
 	// Update is called once per frame
@@ -72,8 +78,8 @@ public class SaveTigerTrigger : MonoBehaviour {
             {
                 print("Wrong Lock");
                 
-				audioFeedback.Play(); 		
-
+				audioFeedback.Play();
+                keyAttached = false;
                 Destroy(keyObject);
                 GlobalGameData.GetComponent<GlobalGameData>().wrongAnswer += 1;
                 GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
@@ -84,16 +90,18 @@ public class SaveTigerTrigger : MonoBehaviour {
             {
                 print("The Right Key");
 
-				audioFeedback.Play(); 		
-
-				StartCoroutine (RewardAnim());
-				runOnce = true;
+				audioFeedback.Play();
+                
+                StartCoroutine (RewardAnim());
+                keyAttached = false;
+                runOnce = true;
                 Destroy(keyObject);
                 Destroy(locker);
                 Destroy(cage);
-            //    GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
-                GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
+            //   GlobalGameData.GetComponent<GlobalGameData>().currentPiecesOfTreasure += 1;
+                
                 isReadyForSceneChange = true;
+                
             }
         }
         
@@ -116,6 +124,7 @@ public class SaveTigerTrigger : MonoBehaviour {
 			print ("Scale : "+i);
 			yield return new WaitForSeconds(0.001f);
 		}
+
 	}
 
 }

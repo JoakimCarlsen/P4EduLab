@@ -33,10 +33,11 @@ public class hitHoles : MonoBehaviour {
 		audioFeedback = GetComponent<AudioSource> ();
         GlobalGameData = GameObject.Find("GlobalGameData");
         GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(false);
-        GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
+        
         GlobalGameData.GetComponent<GlobalGameData>().progressText.GetComponent<Text>().enabled = true; 
         cameraObj = GameObject.Find ("Camera");
-	}
+        GlobalGameData.GetComponent<GlobalGameData>().ActivateMonkey();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -81,7 +82,7 @@ public class hitHoles : MonoBehaviour {
 
 			rb.isKinematic = true;
 
-            GlobalGameData.GetComponent<GlobalGameData>().collectTreasure.SetActive(true);
+            
         }
 
 		if (col.gameObject.name == ("Holes3")) { 		
@@ -101,7 +102,8 @@ public class hitHoles : MonoBehaviour {
             GlobalGameData.GetComponent<GlobalGameData>().restartButton.SetActive(true);
 
         }
-	}
+
+    }
 
 	IEnumerator RewardAnim()
 	{	yield return new WaitForSeconds(1);
