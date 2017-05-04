@@ -104,6 +104,7 @@
     <Compile Include="Assets\Script\Totem Challange\TotemAnsweringMethod.cs" />
     <Compile Include="Assets\Script\Waterfall\WaterfallAnimation.cs" />
     <Compile Include="Assets\Script\Waterfall\hitHoles.cs" />
+    <Compile Include="Assets\Script\winningScore.cs" />
     <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CylinderTargetBehaviour.cs" />

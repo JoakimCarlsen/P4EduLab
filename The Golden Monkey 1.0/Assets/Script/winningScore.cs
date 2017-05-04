@@ -6,14 +6,16 @@ using UnityEngine.UI;
 public class winningScore : MonoBehaviour {
 
 	public GameObject globalGame;
-	public Text text;
+	public Text errorText;
+    public Text timeScorer;
 
 	// Use this for initialization
 	void Start () {
 		globalGame = GameObject.Find("GlobalGameData");
-		text.GetComponent<Text>().text = "Du svarede forkert " + globalGame.GetComponent<GlobalGameData>().wrongAnswer
+		errorText.GetComponent<Text>().text = "Du svarede forkert " + globalGame.GetComponent<GlobalGameData>().wrongAnswer
 			+ " gange.";
-		globalGame.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
+        errorText.GetComponent<Text>().text = "Du tid var " + globalGame.GetComponent<GlobalGameData>().amountOfTimePlayed;
+        globalGame.GetComponent<GlobalGameData>().collectTreasure.SetActive(false);
 	}
 	
 	// Update is called once per frame

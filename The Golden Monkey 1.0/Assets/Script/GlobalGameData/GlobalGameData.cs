@@ -15,6 +15,8 @@ public class GlobalGameData : MonoBehaviour
     public GameObject finalReward; 
     public GameObject restartButton = null;
 
+    public bool gameIsOn = false;
+    public float amountOfTimePlayed;
     public int startValue;
     public int currentPiecesOfTreasure = 0;
     public int maxPiecesOfTreasure = 5;
@@ -43,6 +45,10 @@ public class GlobalGameData : MonoBehaviour
     {
         WinningState();
         progressText.GetComponent<Text>().text = currentPiecesOfTreasure.ToString() + "/" + maxPiecesOfTreasure.ToString();
+        if(gameIsOn == true)
+        {
+            amountOfTimePlayed += Time.deltaTime;
+        }
     }
 
 
@@ -84,10 +90,13 @@ public class GlobalGameData : MonoBehaviour
                 switch (currentPiecesOfTreasure)
                 {
                     case 0:
+                        
                         SceneManager.LoadScene(2);
+                        gameIsOn = true;
                         break;
                     case 1:
                         SceneManager.LoadScene(3);
+
                         break;
                     case 2:
                         SceneManager.LoadScene(4);
@@ -105,6 +114,7 @@ public class GlobalGameData : MonoBehaviour
                 {
                     case 0:
                         SceneManager.LoadScene(3);
+                        gameIsOn = true;
                         break;
                     case 1:
                         SceneManager.LoadScene(4);
@@ -126,6 +136,7 @@ public class GlobalGameData : MonoBehaviour
                 {
                     case 0:
                         SceneManager.LoadScene(4);
+                        gameIsOn = true;
                         break;
                     case 1:
                         SceneManager.LoadScene(5);
@@ -146,6 +157,7 @@ public class GlobalGameData : MonoBehaviour
                 {
                     case 0:
                         SceneManager.LoadScene(5);
+                        gameIsOn = true;
                         break;
                     case 1:
                         SceneManager.LoadScene(6);
@@ -166,6 +178,7 @@ public class GlobalGameData : MonoBehaviour
                 {
                     case 0:
                         SceneManager.LoadScene(6);
+                        gameIsOn = true;
                         break;
                     case 1:
                         SceneManager.LoadScene(2);
@@ -197,6 +210,7 @@ public class GlobalGameData : MonoBehaviour
 			loadOnce = true;
 			SceneManager.LoadScene(7);
             finalReward.SetActive(true);
+            Time.timeScale = 0; 
         }
     }
 
